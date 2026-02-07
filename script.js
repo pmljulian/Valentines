@@ -35,8 +35,34 @@ function showItinerary() {
   setTimeout(() => {
     itinerary.classList.remove('message-hidden');
     itinerary.classList.add('message-visible');
-    console.log("She said yes!");
+    
+    // START THE HEARTS!
+    createHearts();
   }, 600);
+}
+
+function createHearts() {
+  const heartColors = ['💜', '✨', '🌸', '💜', '🤍'];
+  
+  for (let i = 0; i < 25; i++) {
+    setTimeout(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart-float';
+      heart.innerHTML = heartColors[Math.floor(Math.random() * heartColors.length)];
+      
+      // Randomize position and speed
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      heart.style.opacity = Math.random();
+      
+      document.body.appendChild(heart);
+      
+      // Clean up the heart after animation ends
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }, i * 150); // Hearts will spawn one by one
+  }
 }
 function closeItinerary() {
   const itinerary = document.getElementById('itinerary');

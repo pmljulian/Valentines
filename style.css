@@ -1138,3 +1138,23 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 5px;
 }
+.heart-float {
+  position: fixed;
+  bottom: -10%;
+  font-size: 2rem;
+  user-select: none;
+  pointer-events: none;
+  z-index: 5000;
+  animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
